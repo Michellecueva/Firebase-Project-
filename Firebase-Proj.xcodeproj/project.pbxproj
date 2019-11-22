@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		28FD632C23887DA5006312F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD632B23887DA5006312F7 /* AppDelegate.swift */; };
 		28FD632E23887DA5006312F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD632D23887DA5006312F7 /* SceneDelegate.swift */; };
-		28FD633023887DA5006312F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD632F23887DA5006312F7 /* ViewController.swift */; };
-		28FD633323887DA5006312F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28FD633123887DA5006312F7 /* Main.storyboard */; };
+		28FD633023887DA5006312F7 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD632F23887DA5006312F7 /* SignInVC.swift */; };
 		28FD633623887DA5006312F7 /* Firebase_Proj.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28FD633423887DA5006312F7 /* Firebase_Proj.xcdatamodeld */; };
 		28FD633823887DA6006312F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28FD633723887DA6006312F7 /* Assets.xcassets */; };
 		28FD633B23887DA6006312F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28FD633923887DA6006312F7 /* LaunchScreen.storyboard */; };
@@ -22,8 +21,7 @@
 		28FD632823887DA5006312F7 /* Firebase-Proj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Firebase-Proj.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FD632B23887DA5006312F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28FD632D23887DA5006312F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		28FD632F23887DA5006312F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		28FD633223887DA5006312F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		28FD632F23887DA5006312F7 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		28FD633523887DA5006312F7 /* Firebase_Proj.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Firebase_Proj.xcdatamodel; sourceTree = "<group>"; };
 		28FD633723887DA6006312F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28FD633A23887DA6006312F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -69,8 +67,7 @@
 			children = (
 				28FD632B23887DA5006312F7 /* AppDelegate.swift */,
 				28FD632D23887DA5006312F7 /* SceneDelegate.swift */,
-				28FD632F23887DA5006312F7 /* ViewController.swift */,
-				28FD633123887DA5006312F7 /* Main.storyboard */,
+				28FD632F23887DA5006312F7 /* SignInVC.swift */,
 				28FD633723887DA6006312F7 /* Assets.xcassets */,
 				28FD633923887DA6006312F7 /* LaunchScreen.storyboard */,
 				28FD633C23887DA6006312F7 /* Info.plist */,
@@ -86,7 +83,6 @@
 				68CB2DECB6A2909FB0D491B5 /* Pods-Firebase-Proj.debug.xcconfig */,
 				E346008E7CCCE353A078839E /* Pods-Firebase-Proj.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -161,7 +157,6 @@
 				28FD633B23887DA6006312F7 /* LaunchScreen.storyboard in Resources */,
 				28FD6343238882A2006312F7 /* GoogleService-Info.plist in Resources */,
 				28FD633823887DA6006312F7 /* Assets.xcassets in Resources */,
-				28FD633323887DA5006312F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,7 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28FD633023887DA5006312F7 /* ViewController.swift in Sources */,
+				28FD633023887DA5006312F7 /* SignInVC.swift in Sources */,
 				28FD633623887DA5006312F7 /* Firebase_Proj.xcdatamodeld in Sources */,
 				28FD632C23887DA5006312F7 /* AppDelegate.swift in Sources */,
 				28FD632E23887DA5006312F7 /* SceneDelegate.swift in Sources */,
@@ -224,14 +219,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		28FD633123887DA5006312F7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28FD633223887DA5006312F7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		28FD633923887DA6006312F7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
