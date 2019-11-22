@@ -58,7 +58,7 @@ class SignInVC: UIViewController {
                                                     attributes: [NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
                                                                  NSAttributedString.Key.foregroundColor:  UIColor.blue]))
           button.setAttributedTitle(attributedTitle, for: .normal)
-          //button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
+          button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
           return button
       }()
     
@@ -68,6 +68,15 @@ class SignInVC: UIViewController {
         setSubviews()
         setConstraints()
     }
+    
+      //MARK: Obj-C Methods
+    
+    @objc func showSignUp() {
+        let signUpVC = SignUpVC()
+        self.present(signUpVC, animated: true, completion: nil)
+    }
+    
+      //MARK: UI Setup
     
     private func setSubviews() {
         self.view.addSubview(titleLabel)
