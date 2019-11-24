@@ -61,9 +61,9 @@ class DetailViewController: UIViewController {
     
     private func setConstraints() {
         setTitleLabelConstraints()
-        setimageViewConstraints()
+        setImageViewConstraints()
         setSubmittedByLabelConstraints()
-        setCreatedAtLabel()
+        setCreatedAtLabelConstraints()
     }
     
     private func setTitleLabelConstraints() {
@@ -77,7 +77,7 @@ class DetailViewController: UIViewController {
                    ])
     }
     
-    private func setimageViewConstraints() {
+    private func setImageViewConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -100,7 +100,7 @@ class DetailViewController: UIViewController {
                ])
     }
     
-    private func setCreatedAtLabel() {
+    private func setCreatedAtLabelConstraints() {
         createdAtLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
