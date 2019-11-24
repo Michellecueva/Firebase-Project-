@@ -28,6 +28,14 @@ class ProfileVC: UIViewController {
           return imageView
       }()
     
+    lazy var saveButton: UIButton = {
+        let button = UIButton()
+    button.setTitle("Save", for: .normal)
+    button.setTitleColor(.blue, for: .normal)
+        //button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var addImageButton: UIButton = {
          let button = UIButton()
         button.setImage(UIImage(named: "AddButton"), for: .normal)
@@ -69,6 +77,7 @@ class ProfileVC: UIViewController {
          self.view.addSubview(addImageButton)
          self.view.addSubview(displayLabel)
          self.view.addSubview(editDisplayNameButton)
+        self.view.addSubview(saveButton)
      }
     
     private func setConstraints() {
@@ -77,6 +86,7 @@ class ProfileVC: UIViewController {
         setAddImageButtonConstraints()
         setDisplayLabelConstraints()
         setEditDisplayButtonConstraints()
+        setSaveButtonConstraints()
     }
     
     private func setTitleLabelConstraints() {
@@ -99,6 +109,18 @@ class ProfileVC: UIViewController {
                    imageView.widthAnchor.constraint(equalToConstant: 200),
                    imageView.heightAnchor.constraint(equalToConstant: 200)
                ])
+        
+    }
+    
+    private func setSaveButtonConstraints() {
+       saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            saveButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
+            saveButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+                          addImageButton.widthAnchor.constraint(equalToConstant: 50),
+                          addImageButton.heightAnchor.constraint(equalToConstant: 50)
+                      ])
         
     }
     
