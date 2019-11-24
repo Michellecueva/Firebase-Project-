@@ -34,6 +34,7 @@ class SignInVC: UIViewController {
         textField.placeholder = "Password"
         textField.borderStyle = .roundedRect
         textField.backgroundColor = .lightText
+        textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -114,8 +115,9 @@ class SignInVC: UIViewController {
     }
     
     private func transitionToMainFeed() {
-         let mainVC = MainFeedVC()
-         self.present(mainVC, animated: true, completion: nil)
+         let mainVC = TabBarVC()
+        self.modalPresentationStyle = .overFullScreen
+        self.present(mainVC, animated: true, completion: nil)
      }
     
     //MARK: UI Setup
