@@ -22,6 +22,7 @@ class MainFeedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.navigationController?.isNavigationBarHidden = true
         setSubviews()
         setConstraints()
     }

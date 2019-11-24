@@ -18,6 +18,8 @@
 		28FD63472389E869006312F7 /* MainFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD63462389E869006312F7 /* MainFeedVC.swift */; };
 		28FD63492389FC00006312F7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD63482389FC00006312F7 /* StringExtensions.swift */; };
 		28FD634C238A27DA006312F7 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD634B238A27DA006312F7 /* ProfileVC.swift */; };
+		28FD634E238A4320006312F7 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD634D238A4320006312F7 /* TabBarVC.swift */; };
+		28FD6350238A469E006312F7 /* UploadImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD634F238A469E006312F7 /* UploadImageVC.swift */; };
 		775F66CC010036DAF0AB9ECD /* Pods_Firebase_Proj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92621CF8E7AE8D0F9D43188E /* Pods_Firebase_Proj.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		28FD63462389E869006312F7 /* MainFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedVC.swift; sourceTree = "<group>"; };
 		28FD63482389FC00006312F7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		28FD634B238A27DA006312F7 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		28FD634D238A4320006312F7 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		28FD634F238A469E006312F7 /* UploadImageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageVC.swift; sourceTree = "<group>"; };
 		68CB2DECB6A2909FB0D491B5 /* Pods-Firebase-Proj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase-Proj.debug.xcconfig"; path = "Target Support Files/Pods-Firebase-Proj/Pods-Firebase-Proj.debug.xcconfig"; sourceTree = "<group>"; };
 		92621CF8E7AE8D0F9D43188E /* Pods_Firebase_Proj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Firebase_Proj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E346008E7CCCE353A078839E /* Pods-Firebase-Proj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase-Proj.release.xcconfig"; path = "Target Support Files/Pods-Firebase-Proj/Pods-Firebase-Proj.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 				28FD634423889969006312F7 /* SignUpVC.swift */,
 				28FD63462389E869006312F7 /* MainFeedVC.swift */,
 				28FD634B238A27DA006312F7 /* ProfileVC.swift */,
+				28FD634F238A469E006312F7 /* UploadImageVC.swift */,
+				28FD634D238A4320006312F7 /* TabBarVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -232,7 +238,9 @@
 				28FD633023887DA5006312F7 /* SignInVC.swift in Sources */,
 				28FD633623887DA5006312F7 /* Firebase_Proj.xcdatamodeld in Sources */,
 				28FD632C23887DA5006312F7 /* AppDelegate.swift in Sources */,
+				28FD6350238A469E006312F7 /* UploadImageVC.swift in Sources */,
 				28FD63492389FC00006312F7 /* StringExtensions.swift in Sources */,
+				28FD634E238A4320006312F7 /* TabBarVC.swift in Sources */,
 				28FD634C238A27DA006312F7 /* ProfileVC.swift in Sources */,
 				28FD634523889969006312F7 /* SignUpVC.swift in Sources */,
 				28FD632E23887DA5006312F7 /* SceneDelegate.swift in Sources */,
