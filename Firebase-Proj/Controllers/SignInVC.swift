@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignInVC: UIViewController {
     
@@ -43,24 +44,24 @@ class SignInVC: UIViewController {
         button.titleLabel?.font = UIFont(name: "Arial-Bold", size: 16)
         button.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
         button.layer.cornerRadius = 5
-        //button.addTarget(self, action: #selector(tryLogin), for: .touchUpInside)
-        button.isEnabled = false
+        button.addTarget(self, action: #selector(tryLogin), for: .touchUpInside)
+        button.isEnabled = true
         return button
     }()
     
-      lazy var createAccountButton: UIButton = {
-          let button = UIButton(type: .system)
-          let attributedTitle = NSMutableAttributedString(string: "Dont have an account?  ",
-                                                          attributes: [
-                                                              NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
-                                                              NSAttributedString.Key.foregroundColor: UIColor.white])
-          attributedTitle.append(NSAttributedString(string: "Sign Up",
-                                                    attributes: [NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
-                                                                 NSAttributedString.Key.foregroundColor:  UIColor.blue]))
-          button.setAttributedTitle(attributedTitle, for: .normal)
-          button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
-          return button
-      }()
+    lazy var createAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Dont have an account?  ",
+                                                        attributes: [
+                                                            NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
+                                                            NSAttributedString.Key.foregroundColor: UIColor.white])
+        attributedTitle.append(NSAttributedString(string: "Sign Up",
+                                                  attributes: [NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
+                                                               NSAttributedString.Key.foregroundColor:  UIColor.blue]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,14 +70,55 @@ class SignInVC: UIViewController {
         setConstraints()
     }
     
-      //MARK: Obj-C Methods
+    //MARK: Obj-C Methods
     
     @objc func showSignUp() {
         let signUpVC = SignUpVC()
         self.present(signUpVC, animated: true, completion: nil)
     }
     
-      //MARK: UI Setup
+    @objc func tryLogin() {
+        
+        guard let email = emailField.text, let password = passwordField.text else {
+            showErrorAlert(title: "Error", message: "Please fill out all fields.")
+            return
+        }
+        
+        
+        guard email.isValidEmail else {
+            showErrorAlert(title: "Error", message: "Please enter a valid email")
+            return
+        }
+        
+        guard password.isValidPassword else {
+            showErrorAlert(title: "Error", message: "Please enter a valid password. Passwords must have at least 8 characters.")
+            return
+        }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if error != nil {
+                self.showErrorAlert(title: "Error", message: error!.localizedDescription)
+            } else {
+                self.transitionToMainFeed()
+            }
+        }
+        
+    }
+    
+    //MARK: Private func
+    
+    private func showErrorAlert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
+    
+    private func transitionToMainFeed() {
+         let mainVC = MainFeedVC()
+         self.present(mainVC, animated: true, completion: nil)
+     }
+    
+    //MARK: UI Setup
     
     private func setSubviews() {
         self.view.addSubview(titleLabel)
@@ -124,23 +166,23 @@ class SignInVC: UIViewController {
     }
     
     private func setLogInButtonConstraints() {
-          loginButton.translatesAutoresizingMaskIntoConstraints = false
-          NSLayoutConstraint.activate([
-              loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30),
-              loginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-              loginButton.widthAnchor.constraint(equalToConstant: 300),
-              loginButton.heightAnchor.constraint(equalToConstant: 50)
-          ])
-      }
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30),
+            loginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            loginButton.widthAnchor.constraint(equalToConstant: 300),
+            loginButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
     
     private func setCreateAccountButtonConstraints() {
-             createAccountButton.translatesAutoresizingMaskIntoConstraints = false
-             NSLayoutConstraint.activate([
-                 createAccountButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
-                 createAccountButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                 createAccountButton.widthAnchor.constraint(equalToConstant: 300),
-                 createAccountButton.heightAnchor.constraint(equalToConstant: 50)
-             ])
-         }
+        createAccountButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            createAccountButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
+            createAccountButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            createAccountButton.widthAnchor.constraint(equalToConstant: 300),
+            createAccountButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
 }
 

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SignUpVC: UIViewController {
 
@@ -28,7 +30,7 @@ class SignUpVC: UIViewController {
         textField.backgroundColor = .white
         textField.borderStyle = .bezel
         textField.autocorrectionType = .no
-        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+        //textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         return textField
     }()
        
@@ -39,7 +41,7 @@ class SignUpVC: UIViewController {
            textField.backgroundColor = .white
            textField.borderStyle = .bezel
            textField.autocorrectionType = .no
-           textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+         //  textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
            return textField
        }()
     
@@ -50,7 +52,7 @@ class SignUpVC: UIViewController {
            textField.backgroundColor = .white
            textField.borderStyle = .bezel
            textField.autocorrectionType = .no
-           textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+         //  textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
            return textField
        }()
        
@@ -62,7 +64,7 @@ class SignUpVC: UIViewController {
            textField.borderStyle = .bezel
            textField.autocorrectionType = .no
            textField.isSecureTextEntry = true
-           textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+          // textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
            return textField
        }()
        
@@ -73,8 +75,8 @@ class SignUpVC: UIViewController {
            button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 14)
         button.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
            button.layer.cornerRadius = 5
-           //button.addTarget(self, action: #selector(trySignUp), for: .touchUpInside)
-           button.isEnabled = false
+           button.addTarget(self, action: #selector(trySignUp), for: .touchUpInside)
+           button.isEnabled = true
            return button
        }()
        
@@ -89,25 +91,78 @@ class SignUpVC: UIViewController {
        
        //MARK: Obj-C Methods
        
-       @objc func validateFields() {
-        guard firstNameTextField.hasText,lastNameTextField.hasText,emailTextField.hasText, passwordTextField.hasText else {
-            createButton.alpha = 0.3
-               createButton.isEnabled = false
-               return
-           }
-           createButton.isEnabled = true
-        createButton.alpha = 1.0
-       }
+//       @objc func validateFields() {
+//        guard firstNameTextField.hasText,lastNameTextField.hasText,emailTextField.hasText, passwordTextField.hasText else {
+//            createButton.alpha = 0.3
+//               createButton.isEnabled = false
+//               return
+//           }
+//           createButton.isEnabled = true
+//        createButton.alpha = 1.0
+//       }
+    
+    @objc func trySignUp() {
+        
+        if validateFields() {
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
+                if error != nil {
+                    self.showErrorAlert(title: "Error", message: "Not able to create user")
+                } else {
+                    let db = Firestore.firestore()
+                    
+                    db.collection("users").addDocument(data: [
+                        "firstName": self.firstNameTextField.text!,
+                        "lastName": self.lastNameTextField.text!,
+                        "uid": result!.user.uid
+                        
+                        
+                    ]) { (error) in
+                        if error != nil {
+                            print(error!)
+                        }
+                    }
+                    
+                    self.transitionToProfile()
+                }
+            }
+        } else {
+            return
+        }
+    }
        
 
        
        //MARK: Private methods
        
-       private func showAlert(with title: String, and message: String) {
+       private func showErrorAlert(title: String, message: String) {
            let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
            present(alertVC, animated: true, completion: nil)
        }
+    
+    private func validateFields() -> Bool {
+        guard let _ = firstNameTextField.text, let _ = lastNameTextField.text,let email = emailTextField.text, let password = passwordTextField.text else {
+                  showErrorAlert(title: "Error", message: "Please fill out all fields.")
+                  return false
+              }
+              
+              guard email.isValidEmail else {
+                  showErrorAlert(title: "Error", message: "Please enter a valid email")
+                  return false
+              }
+              
+              guard password.isValidPassword else {
+                  showErrorAlert(title: "Error", message: "Please enter a valid password. Passwords must have at least 8 characters.")
+                  return false
+              }
+        
+        return true
+    }
+    
+    private func transitionToProfile() {
+        let profileVC = ProfileVC()
+        self.present(profileVC, animated: true, completion: nil)
+    }
        
        
        //MARK: UI Setup
