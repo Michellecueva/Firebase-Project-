@@ -96,13 +96,22 @@ class SignInVC: UIViewController {
             return
         }
         
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if error != nil {
-                self.showErrorAlert(title: "Error", message: error!.localizedDescription)
-            } else {
-                self.transitionToMainFeed()
+        FirebaseAuthService.manager.loginUser(email: email, password: password) { [weak self] (result) in
+            switch result {
+            case.success:
+                self?.transitionToMainFeed()
+            case .failure(let error):
+                self?.showErrorAlert(title: "Error", message: error.localizedDescription)
             }
         }
+        
+//        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+//            if error != nil {
+//                self.showErrorAlert(title: "Error", message: error!.localizedDescription)
+//            } else {
+//                self.transitionToMainFeed()
+//            }
+//        }
         
     }
     

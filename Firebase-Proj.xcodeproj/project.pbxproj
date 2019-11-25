@@ -25,6 +25,7 @@
 		28FD635A238B4CD9006312F7 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD6359238B4CD9006312F7 /* AppUser.swift */; };
 		28FD635D238C570A006312F7 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD635C238C570A006312F7 /* FirebaseAuthService.swift */; };
 		28FD6360238C5814006312F7 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD635F238C5814006312F7 /* FirebaseStorageService.swift */; };
+		28FD6362238C8C16006312F7 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD6361238C8C16006312F7 /* FirestoreService.swift */; };
 		775F66CC010036DAF0AB9ECD /* Pods_Firebase_Proj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92621CF8E7AE8D0F9D43188E /* Pods_Firebase_Proj.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		28FD6359238B4CD9006312F7 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		28FD635C238C570A006312F7 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		28FD635F238C5814006312F7 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
+		28FD6361238C8C16006312F7 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		68CB2DECB6A2909FB0D491B5 /* Pods-Firebase-Proj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase-Proj.debug.xcconfig"; path = "Target Support Files/Pods-Firebase-Proj/Pods-Firebase-Proj.debug.xcconfig"; sourceTree = "<group>"; };
 		92621CF8E7AE8D0F9D43188E /* Pods_Firebase_Proj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Firebase_Proj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E346008E7CCCE353A078839E /* Pods-Firebase-Proj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase-Proj.release.xcconfig"; path = "Target Support Files/Pods-Firebase-Proj/Pods-Firebase-Proj.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				28FD635C238C570A006312F7 /* FirebaseAuthService.swift */,
+				28FD6361238C8C16006312F7 /* FirestoreService.swift */,
 				28FD635F238C5814006312F7 /* FirebaseStorageService.swift */,
 			);
 			path = Firebase;
@@ -287,6 +290,7 @@
 				28FD635A238B4CD9006312F7 /* AppUser.swift in Sources */,
 				28FD633623887DA5006312F7 /* Firebase_Proj.xcdatamodeld in Sources */,
 				28FD632C23887DA5006312F7 /* AppDelegate.swift in Sources */,
+				28FD6362238C8C16006312F7 /* FirestoreService.swift in Sources */,
 				28FD6356238A503A006312F7 /* DetailViewController.swift in Sources */,
 				28FD6350238A469E006312F7 /* UploadImageVC.swift in Sources */,
 				28FD635D238C570A006312F7 /* FirebaseAuthService.swift in Sources */,

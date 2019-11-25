@@ -91,40 +91,17 @@ class SignUpVC: UIViewController {
        
        //MARK: Obj-C Methods
        
-//       @objc func validateFields() {
-//        guard firstNameTextField.hasText,lastNameTextField.hasText,emailTextField.hasText, passwordTextField.hasText else {
-//            createButton.alpha = 0.3
-//               createButton.isEnabled = false
-//               return
-//           }
-//           createButton.isEnabled = true
-//        createButton.alpha = 1.0
-//       }
     
     @objc func trySignUp() {
         
         if validateFields() {
-            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (result, error) in
-                if error != nil {
-                    self.showErrorAlert(title: "Error", message: "Not able to create user")
-                } else {
-                    let db = Firestore.firestore()
-                    
-                    db.collection("users").addDocument(data: [
-                        "firstName": self.firstNameTextField.text!,
-                        "lastName": self.lastNameTextField.text!,
-                        "uid": result!.user.uid
-                        
-                        
-                    ]) { (error) in
-                        if error != nil {
-                            print(error!)
-                        }
-                    }
-                    
-                    self.transitionToProfile()
-                }
+            
+            let email = emailTextField.text!
+            let password = passwordTextField.text!
+            FirebaseAuthService.manager.createNewUser(email: email, password:password) { [weak self] (result) in
+                self?.handleCreateAccountResponse(result: result)
             }
+
         } else {
             return
         }
@@ -157,6 +134,24 @@ class SignUpVC: UIViewController {
               }
         
         return true
+    }
+    
+    private func handleCreateAccountResponse(result: Result<User, Error>) {
+        DispatchQueue.main.async { [weak self] in
+            switch result {
+            case .success(let user):
+                FirestoreService.manager.createAppUser(user: AppUser(from: user)) { [weak self] (result) in
+                    switch result {
+                    case .success:
+                        self?.transitionToProfile()
+                    case .failure(let error):
+                        self?.showErrorAlert(title: "Error creating user", message: error.localizedDescription)
+                    }
+                }
+            case .failure(let error):
+                self?.showErrorAlert(title: "Error creating user", message: error.localizedDescription)
+            }
+        }
     }
     
     private func transitionToProfile() {
