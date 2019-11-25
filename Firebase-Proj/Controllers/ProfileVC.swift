@@ -7,10 +7,24 @@
 //
 
 import UIKit
+import AVFoundation
+import FirebaseAuth
 
 class ProfileVC: UIViewController {
     
-   
+//    var user = AppUser(from: FirebaseAuthService.manager.currentUser!)
+    
+    var displayNameHolder = "Display Name"
+       
+    var defaultImage = UIImage(systemName: "person")
+    
+    var savedImage : UIImage! {
+        didSet {
+            imageView.image = savedImage
+        }
+    }
+
+
        lazy var titleLabel : UILabel = {
            let label = UILabel()
            label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -23,7 +37,7 @@ class ProfileVC: UIViewController {
     lazy var imageView: UIImageView = {
           let imageView = UIImageView()
         imageView.backgroundColor = .gray
-          imageView.image = UIImage(systemName: "person")
+          imageView.image = defaultImage
         imageView.layer.cornerRadius = 30
           return imageView
       }()
@@ -32,6 +46,7 @@ class ProfileVC: UIViewController {
         let button = UIButton()
     button.setTitle("Save", for: .normal)
     button.setTitleColor(.blue, for: .normal)
+        button.isEnabled = false
         //button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
         return button
     }()
@@ -39,14 +54,14 @@ class ProfileVC: UIViewController {
     lazy var addImageButton: UIButton = {
          let button = UIButton()
         button.setImage(UIImage(named: "AddButton"), for: .normal)
-         //button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
          return button
      }()
     
     lazy var displayLabel : UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        label.text = "Display Name"
+        label.text = displayNameHolder
         label.font = UIFont(name: "Arial", size: 25.0)
         label.textAlignment = .center
         return label
@@ -56,7 +71,7 @@ class ProfileVC: UIViewController {
             let button = UIButton()
         button.setTitle("Edit Username", for: .normal)
         button.setTitleColor(.blue, for: .normal)
-            //button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(editDisplayNamePressed), for: .touchUpInside)
             return button
         }()
 
@@ -67,6 +82,87 @@ class ProfileVC: UIViewController {
         setConstraints()
 
     }
+    //MARK: Obj-C Methods
+    
+    @objc func addImagePressed() {
+        checkAuthorizationForAccessingPhotos()
+    }
+    
+    @objc func editDisplayNamePressed() {
+          let alert = UIAlertController(title: "UserName", message: nil, preferredStyle: .alert)
+          
+          
+          alert.addTextField { (textfield) in
+              textfield.placeholder = "Enter UserName"
+          }
+          
+          guard let userNameField = alert.textFields else {return}
+          
+          alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ (alert) -> Void in
+              
+            self.displayLabel.text = userNameField[0].text ?? self.displayNameHolder
+                 
+             }))
+          
+          present(alert, animated: true, completion: nil)
+          
+         }
+    
+    //MARK: Private func
+    
+    private func setupCaptureSession() {
+           DispatchQueue.main.async {
+               let myPickerController = UIImagePickerController()
+               myPickerController.delegate = self
+               self.present(myPickerController, animated: true, completion: nil)
+
+           }
+       }
+    
+    private func checkAuthorizationForAccessingPhotos() {
+         switch AVCaptureDevice.authorizationStatus(for: .video) {
+         case .authorized: // The user has previously granted access to the camera.
+             return setupCaptureSession()
+     
+         case .notDetermined: // The user has not yet been asked for camera access.
+             AVCaptureDevice.requestAccess(for: .video) { granted in
+                 if granted {
+                     self.setupCaptureSession()
+                 }
+             }
+             
+         case .denied: // The user has previously denied access.
+             return alertCameraAccessNeeded()
+             
+         case .restricted: // The user can't grant access due to restrictions.
+             return
+             
+         default:
+             return
+         }
+     }
+    
+    private func alertCameraAccessNeeded() {
+            let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+          
+            let alert = UIAlertController(
+            title: "Need Camera Access",
+                    message: "Camera access is required to make full use of this app.",
+                    preferredStyle: UIAlertController.Style.alert
+                )
+          
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Allow Camera", style: .cancel, handler: { (alert) -> Void in
+               UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+            }))
+            present(alert, animated: true, completion: nil)
+    }
+    
+    private func formValidation() {
+           let validUserName = displayLabel.text != displayNameHolder
+           let imagePresent = imageView.image != defaultImage
+           saveButton.isEnabled = validUserName && imagePresent
+       }
     
    
     //MARK: UI Setup
@@ -159,4 +255,14 @@ class ProfileVC: UIViewController {
                           ])
     }
     
+}
+
+extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
+        savedImage = image
+        formValidation()
+        self.dismiss(animated: true, completion: nil)
+    }
 }
