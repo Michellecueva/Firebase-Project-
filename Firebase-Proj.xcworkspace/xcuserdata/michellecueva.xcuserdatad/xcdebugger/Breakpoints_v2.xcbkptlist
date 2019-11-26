@@ -94,8 +94,8 @@
             filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,153 +110,9 @@
             filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8C7467A2-5BDE-4CDD-B2EC-D9DA33ADB674"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "saveButtonPressed()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8C7467A2-5BDE-4CDD-B2EC-D9DA33ADB674 - e0c5919ba1630a14"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Firebase_Proj.ProfileVC.saveButtonPressed() -&gt; ()"
-                  moduleName = "Firebase-Proj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Firebase-Proj/Firebase-Proj/Controllers/ProfileVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "640">
-               </Location>
-               <Location
-                  uuid = "8C7467A2-5BDE-4CDD-B2EC-D9DA33ADB674 - b802064d4ca90c60"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in Firebase_Proj.ProfileVC.saveButtonPressed() -&gt; ()"
-                  moduleName = "Firebase-Proj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Firebase-Proj/Firebase-Proj/Controllers/ProfileVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "231">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E222ED5A-7B00-4484-A6BC-7942DC54E645"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "saveButtonPressed()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E222ED5A-7B00-4484-A6BC-7942DC54E645 - b802064d4ca90c60"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in Firebase_Proj.ProfileVC.saveButtonPressed() -&gt; ()"
-                  moduleName = "Firebase-Proj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Firebase-Proj/Firebase-Proj/Controllers/ProfileVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "286">
-               </Location>
-               <Location
-                  uuid = "E222ED5A-7B00-4484-A6BC-7942DC54E645 - aa4c376d95dacc35"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in closure #1 (Swift.Result&lt;(), Swift.Error&gt;) -&gt; () in Firebase_Proj.ProfileVC.saveButtonPressed() -&gt; ()"
-                  moduleName = "Firebase-Proj"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Firebase-Proj/Firebase-Proj/Controllers/ProfileVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "144">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3009841E-10F9-4F9C-B7C7-3847BBC83B2D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "saveButtonPressed()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0292B703-09EA-41E3-B8A1-C04232B38B95"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "saveButtonPressed()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CD189EBB-D379-46C5-8209-CCD9309D0D5D"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "saveButtonPressed()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -401,22 +257,6 @@
             startingLineNumber = "42"
             endingLineNumber = "42"
             landmarkName = "updateCurrentUser(userName:photoURL:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "88BF6DBA-DE0A-4973-AAA0-5AB6AD3C2330"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "saveButtonPressed()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -706,6 +546,86 @@
                   offsetFromSymbolStart = "276">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FD96BC5B-0068-447E-A7EC-25417B6B7339"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "saveButtonPressed()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3D2DF81D-B38B-4E22-B1F4-6A3603C6973A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "userNameLabel"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D6C54261-FC82-4356-91F3-5740706C33FB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "editDisplayNamePressed()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C4184D6-664C-43A6-BEC9-CDEDB604AF72"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "addImagePressed()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A04D790-771A-4192-A11B-E134FDF2B19B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Firebase-Proj/Controllers/ProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

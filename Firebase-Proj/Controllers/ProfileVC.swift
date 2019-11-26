@@ -79,9 +79,12 @@ class ProfileVC: UIViewController {
         self.view.backgroundColor = .white
         setSubviews()
         setConstraints()
-        if let user = FirebaseAuthService.manager.currentUser {
+        if let displayName = FirebaseAuthService.manager.currentUser?.displayName {
             loadImage()
-            userNameLabel.text = user.displayName
+            userNameLabel.text = displayName
+            
+            let user = FirebaseAuthService.manager.currentUser
+            imageURL = user?.photoURL
         }
 
     }
@@ -118,33 +121,48 @@ class ProfileVC: UIViewController {
          }
     
     @objc func saveButtonPressed() {
-        guard let userName = userNameLabel.text, let imageUrl = imageURL else {
-            showErrorAlert(title: "Missing information", message: "A username and image are needed")
+        guard let userName = userNameLabel.text, let image = imageView.image else {
+            print("Defaults are not working")
             return
         }
+        
+        let validInput = (userName != displayNameHolder) && (image != defaultImage)
+        
+        if validInput {
+            
+            guard let imageUrl = imageURL else {
+                      print("Not able to compute imageUrl")
+                      return
+                  }
+            
+            FirebaseAuthService.manager.updateUserFields(userName: userName, photoURL: imageUrl) { (result) in
+                 switch result {
+                 case .success():
+                     FirestoreService.manager.updateCurrentUser(userName: userName, photoURL: imageUrl) { [weak self] (nextResult) in
+                         switch nextResult {
+                         case .success():
+                             
+                             self?.transitionToMainFeed()
+                         case .failure(let error):
+                             //MARK: TODO - handle
 
-       FirebaseAuthService.manager.updateUserFields(userName: userName, photoURL: imageUrl) { (result) in
-            switch result {
-            case .success():
-                FirestoreService.manager.updateCurrentUser(userName: userName, photoURL: imageUrl) { [weak self] (nextResult) in
-                    switch nextResult {
-                    case .success():
-                        self?.transitionToMainFeed()
-                    case .failure(let error):
-                        //MARK: TODO - handle
-
-                        //Discussion - if can't update on user object in collection, our firestore object will not match what is in auth. should we:
-                        // 1. Re-try the save?
-                        // 2. Revert the changes on the auth user?
-                        // This reconciliation should all be handled on the server side, but having to handle here, we could run into an infinite loop when re-saving.
-                        print("Failure to update current user: \(error)")
-                    }
-                }
-            case .failure(let error):
-                //MARK: TODO - handle
-                print(error)
-            }
+                             //Discussion - if can't update on user object in collection, our firestore object will not match what is in auth. should we:
+                             // 1. Re-try the save?
+                             // 2. Revert the changes on the auth user?
+                             // This reconciliation should all be handled on the server side, but having to handle here, we could run into an infinite loop when re-saving.
+                             print("Failure to update current user: \(error)")
+                         }
+                     }
+                 case .failure(let error):
+                     //MARK: TODO - handle
+                     print(error)
+                 }
+             }
+        } else {
+            showErrorAlert(title: "Missing Requirements", message: "Profile needs a username and image")
         }
+        
+
     }
     
     //MARK: Private func
@@ -226,9 +244,12 @@ class ProfileVC: UIViewController {
        }
     
     private func transitionToMainFeed() {
-          let mainVC = TabBarVC()
-         self.modalPresentationStyle = .overFullScreen
-         self.present(mainVC, animated: true, completion: nil)
+         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+          
+            let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window else {return}
+          
+        window.rootViewController = TabBarVC()
+
       }
     
     private func showErrorAlert(title: String, message: String) {

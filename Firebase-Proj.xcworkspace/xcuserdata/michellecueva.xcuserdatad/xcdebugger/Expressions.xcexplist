@@ -61,6 +61,25 @@
          contextName = "FirestoreService.createPost(post:completion:):FirestoreService.swift">
       </ContextState>
       <ContextState
+         contextName = "ProfileVC.addImagePressed():ProfileVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userNameLabel.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in ProfileVC.userNameLabel.getter:ProfileVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "label.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ProfileVC.saveButtonPressed():ProfileVC.swift">
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in DetailViewController.loadImage():DetailViewController.swift">
          <PersistentStrings>
             <PersistentString
