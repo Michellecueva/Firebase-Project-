@@ -80,18 +80,41 @@ class FirestoreService {
         }
     }
     
-    func getAllUsers(completion: @escaping (Result<[AppUser], Error>) -> ()) {
-        db.collection(FireStoreCollections.users.rawValue).getDocuments { (snapshot, error) in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                let users = snapshot?.documents.compactMap({ (snapshot) -> AppUser? in
-                    let userID = snapshot.documentID
-                    let user = AppUser(from: snapshot.data(), id: userID)
-                    return user
-                })
-                completion(.success(users ?? []))
-            }
-        }
-    }
+    //MARK: Posts
+    
+    func createPost(post: Post, completion: @escaping (Result<(), Error>) -> ()) {
+           var fields = post.fieldsDict
+           fields["dateCreated"] = Date()
+           db.collection(FireStoreCollections.posts.rawValue).addDocument(data: fields) { (error) in
+               if let error = error {
+                   completion(.failure(error))
+               } else {
+                   completion(.success(()))
+               }
+           }
+       }
+       
+       func getAllPosts(completion: @escaping (Result<[Post], Error>) -> ()) {
+           let completionHandler: FIRQuerySnapshotBlock = {(snapshot, error) in
+               if let error = error {
+                   completion(.failure(error))
+               } else {
+                   let posts = snapshot?.documents.compactMap({ (snapshot) -> Post? in
+                       let postID = snapshot.documentID
+                       let post = Post(from: snapshot.data(), id: postID)
+                       return post
+                   })
+                   completion(.success(posts ?? []))
+               }
+           }
+
+           //type: Collection Reference
+           let collection = db.collection(FireStoreCollections.posts.rawValue)
+           //If i want to sort, or even to filter my collection, it's going to work with an instance of a different type - FIRQuery
+           //collection + sort/filter settings.getDocuments
+         
+            let query = collection.order(by:"dateCreated", descending: true)
+               query.getDocuments(completion: completionHandler)
+
+       }
 }

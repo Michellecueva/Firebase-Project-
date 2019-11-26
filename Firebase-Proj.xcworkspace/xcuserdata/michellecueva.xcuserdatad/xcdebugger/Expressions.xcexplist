@@ -3,6 +3,39 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "closure #1 in closure #1 in ProfileVC.saveButtonPressed():ProfileVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in FirestoreService.updateCurrentUser(userName:photoURL:completion:):FirestoreService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FirestoreService.updateCurrentUser(userName:photoURL:completion:):FirestoreService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "db.collection(FireStoreCollections.users.rawValue)">
+            </PersistentString>
+            <PersistentString
+               value = "userId">
+            </PersistentString>
+            <PersistentString
+               value = "FireStoreCollections.users.rawValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "mach_msg_trap:(null)">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ProfileVC.imagePickerController(_:didFinishPickingMediaWithInfo:):ProfileVC.swift">
          <PersistentStrings>
             <PersistentString
@@ -25,27 +58,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "closure #1 in closure #1 in ProfileVC.saveButtonPressed():ProfileVC.swift">
+         contextName = "FirestoreService.createPost(post:completion:):FirestoreService.swift">
       </ContextState>
       <ContextState
-         contextName = "closure #1 in FirestoreService.updateCurrentUser(userName:photoURL:completion:):FirestoreService.swift">
+         contextName = "closure #1 in DetailViewController.loadImage():DetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "userId">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "FirestoreService.updateCurrentUser(userName:photoURL:completion:):FirestoreService.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "db.collection(FireStoreCollections.users.rawValue)">
-            </PersistentString>
-            <PersistentString
-               value = "userId">
-            </PersistentString>
-            <PersistentString
-               value = "FireStoreCollections.users.rawValue">
+               value = "imageUrl">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

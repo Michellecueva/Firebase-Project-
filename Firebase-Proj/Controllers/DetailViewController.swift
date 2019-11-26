@@ -10,6 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    var userName = String()
+    var imageUrl = String()
+    var createdAt: Date!
+    
+    
     lazy var titleLabel : UILabel = {
            let label = UILabel()
            label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -28,7 +33,7 @@ class DetailViewController: UIViewController {
     lazy var submittedByLabel : UILabel = {
            let label = UILabel()
            label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-           label.text = "Submitted by: "
+           label.text = "Submitted by: \(userName) "
            label.font = UIFont(name: "Arial", size: 20)
            return label
        }()
@@ -36,7 +41,7 @@ class DetailViewController: UIViewController {
     lazy var createdAtLabel : UILabel = {
              let label = UILabel()
              label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-             label.text = "Created at: "
+             label.text = "Created at: \(createdAt) "
              label.font = UIFont(name: "Arial", size: 17)
              return label
          }()
@@ -47,6 +52,24 @@ class DetailViewController: UIViewController {
         self.view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setSubviews()
         setConstraints()
+        loadImage()
+    }
+    
+    //MARK: Private func
+    
+    private func loadImage() {
+    
+        ImageHelper.shared.getImage(urlStr: imageUrl) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let imageFromUrl):
+                DispatchQueue.main.async {
+                    self.imageView.image = imageFromUrl
+                }
+                
+            }
+        }
     }
     
     

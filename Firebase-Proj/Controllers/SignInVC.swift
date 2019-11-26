@@ -80,7 +80,7 @@ class SignInVC: UIViewController {
     
     @objc func tryLogin() {
         
-        guard let email = emailField.text, let password = passwordField.text else {
+        guard let email = emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines), let password = passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
             showErrorAlert(title: "Error", message: "Please fill out all fields.")
             return
         }
@@ -104,14 +104,6 @@ class SignInVC: UIViewController {
                 self?.showErrorAlert(title: "Error", message: error.localizedDescription)
             }
         }
-        
-//        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-//            if error != nil {
-//                self.showErrorAlert(title: "Error", message: error!.localizedDescription)
-//            } else {
-//                self.transitionToMainFeed()
-//            }
-//        }
         
     }
     
@@ -162,7 +154,7 @@ class SignInVC: UIViewController {
             emailField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
             emailField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             emailField.widthAnchor.constraint(equalToConstant: 300),
-            emailField.heightAnchor.constraint(equalToConstant: 50)
+            emailField.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -172,7 +164,7 @@ class SignInVC: UIViewController {
             passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 30),
             passwordField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             passwordField.widthAnchor.constraint(equalToConstant: 300),
-            passwordField.heightAnchor.constraint(equalToConstant: 50)
+            passwordField.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -182,7 +174,7 @@ class SignInVC: UIViewController {
             loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 30),
             loginButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             loginButton.widthAnchor.constraint(equalToConstant: 300),
-            loginButton.heightAnchor.constraint(equalToConstant: 50)
+            loginButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     

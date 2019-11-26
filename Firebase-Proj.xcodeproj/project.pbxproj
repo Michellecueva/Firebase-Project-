@@ -13,7 +13,6 @@
 		28FD633623887DA5006312F7 /* Firebase_Proj.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28FD633423887DA5006312F7 /* Firebase_Proj.xcdatamodeld */; };
 		28FD633823887DA6006312F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28FD633723887DA6006312F7 /* Assets.xcassets */; };
 		28FD633B23887DA6006312F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28FD633923887DA6006312F7 /* LaunchScreen.storyboard */; };
-		28FD6343238882A2006312F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28FD6342238882A2006312F7 /* GoogleService-Info.plist */; };
 		28FD634523889969006312F7 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD634423889969006312F7 /* SignUpVC.swift */; };
 		28FD63472389E869006312F7 /* MainFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD63462389E869006312F7 /* MainFeedVC.swift */; };
 		28FD63492389FC00006312F7 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD63482389FC00006312F7 /* StringExtensions.swift */; };
@@ -27,6 +26,9 @@
 		28FD6360238C5814006312F7 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD635F238C5814006312F7 /* FirebaseStorageService.swift */; };
 		28FD6362238C8C16006312F7 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD6361238C8C16006312F7 /* FirestoreService.swift */; };
 		28FD6364238CA270006312F7 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD6363238CA270006312F7 /* Post.swift */; };
+		28FD6366238CD5C5006312F7 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD6365238CD5C5006312F7 /* ImageHelper.swift */; };
+		28FD6368238CD648006312F7 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FD6367238CD648006312F7 /* AppError.swift */; };
+		28FD6373238DC120006312F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28FD6372238DC120006312F7 /* GoogleService-Info.plist */; };
 		775F66CC010036DAF0AB9ECD /* Pods_Firebase_Proj.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92621CF8E7AE8D0F9D43188E /* Pods_Firebase_Proj.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +41,6 @@
 		28FD633723887DA6006312F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28FD633A23887DA6006312F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28FD633C23887DA6006312F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28FD6342238882A2006312F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28FD634423889969006312F7 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		28FD63462389E869006312F7 /* MainFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeedVC.swift; sourceTree = "<group>"; };
 		28FD63482389FC00006312F7 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -53,6 +54,9 @@
 		28FD635F238C5814006312F7 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		28FD6361238C8C16006312F7 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		28FD6363238CA270006312F7 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		28FD6365238CD5C5006312F7 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		28FD6367238CD648006312F7 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		28FD6372238DC120006312F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		68CB2DECB6A2909FB0D491B5 /* Pods-Firebase-Proj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase-Proj.debug.xcconfig"; path = "Target Support Files/Pods-Firebase-Proj/Pods-Firebase-Proj.debug.xcconfig"; sourceTree = "<group>"; };
 		92621CF8E7AE8D0F9D43188E /* Pods_Firebase_Proj.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Firebase_Proj.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E346008E7CCCE353A078839E /* Pods-Firebase-Proj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase-Proj.release.xcconfig"; path = "Target Support Files/Pods-Firebase-Proj/Pods-Firebase-Proj.release.xcconfig"; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 			children = (
 				28FD632B23887DA5006312F7 /* AppDelegate.swift */,
 				28FD632D23887DA5006312F7 /* SceneDelegate.swift */,
+				28FD6365238CD5C5006312F7 /* ImageHelper.swift */,
+				28FD6367238CD648006312F7 /* AppError.swift */,
 				28FD6354238A4F88006312F7 /* Views */,
 				28FD634A238A278B006312F7 /* Controllers */,
 				28FD635B238C56E0006312F7 /* Models */,
@@ -101,7 +107,7 @@
 				28FD633723887DA6006312F7 /* Assets.xcassets */,
 				28FD633923887DA6006312F7 /* LaunchScreen.storyboard */,
 				28FD633C23887DA6006312F7 /* Info.plist */,
-				28FD6342238882A2006312F7 /* GoogleService-Info.plist */,
+				28FD6372238DC120006312F7 /* GoogleService-Info.plist */,
 				28FD633423887DA5006312F7 /* Firebase_Proj.xcdatamodeld */,
 			);
 			path = "Firebase-Proj";
@@ -234,8 +240,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				28FD633B23887DA6006312F7 /* LaunchScreen.storyboard in Resources */,
-				28FD6343238882A2006312F7 /* GoogleService-Info.plist in Resources */,
 				28FD633823887DA6006312F7 /* Assets.xcassets in Resources */,
+				28FD6373238DC120006312F7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +296,7 @@
 			files = (
 				28FD633023887DA5006312F7 /* SignInVC.swift in Sources */,
 				28FD6360238C5814006312F7 /* FirebaseStorageService.swift in Sources */,
+				28FD6368238CD648006312F7 /* AppError.swift in Sources */,
 				28FD635A238B4CD9006312F7 /* AppUser.swift in Sources */,
 				28FD633623887DA5006312F7 /* Firebase_Proj.xcdatamodeld in Sources */,
 				28FD6364238CA270006312F7 /* Post.swift in Sources */,
@@ -299,6 +306,7 @@
 				28FD6350238A469E006312F7 /* UploadImageVC.swift in Sources */,
 				28FD635D238C570A006312F7 /* FirebaseAuthService.swift in Sources */,
 				28FD63492389FC00006312F7 /* StringExtensions.swift in Sources */,
+				28FD6366238CD5C5006312F7 /* ImageHelper.swift in Sources */,
 				28FD634E238A4320006312F7 /* TabBarVC.swift in Sources */,
 				28FD634C238A27DA006312F7 /* ProfileVC.swift in Sources */,
 				28FD634523889969006312F7 /* SignUpVC.swift in Sources */,

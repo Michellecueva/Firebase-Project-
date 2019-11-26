@@ -14,6 +14,7 @@ class MainFeedCell: UICollectionViewCell {
           label.numberOfLines = 0
           label.adjustsFontSizeToFitWidth = true
           label.textAlignment = .center
+        label.textColor = .white
           return label
       }()
     

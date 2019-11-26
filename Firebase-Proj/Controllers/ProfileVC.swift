@@ -81,9 +81,18 @@ class ProfileVC: UIViewController {
         self.view.backgroundColor = .white
         setSubviews()
         setConstraints()
+        if let user = FirebaseAuthService.manager.currentUser {
+            loadImage()
+            userNameLabel.text = user.displayName
+        }
 
     }
     //MARK: Obj-C Methods
+    
+    //add button to sign out
+    
+    //Firebase.AuthService.manager.signoutUser()
+    //rootController will be signIn screen 
     
     @objc func addImagePressed() {
         checkAuthorizationForAccessingPhotos()
@@ -141,6 +150,25 @@ class ProfileVC: UIViewController {
     }
     
     //MARK: Private func
+    
+    
+    private func loadImage() {
+        guard let imageUrl = FirebaseAuthService.manager.currentUser?.photoURL else {
+            print("photo url not found")
+            return
+        }
+        ImageHelper.shared.getImage(urlStr: imageUrl.absoluteString) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let imageFromUrl):
+                DispatchQueue.main.async {
+                    self.savedImage = imageFromUrl
+                }
+                
+            }
+        }
+    }
     
     private func setupCaptureSession() {
            DispatchQueue.main.async {

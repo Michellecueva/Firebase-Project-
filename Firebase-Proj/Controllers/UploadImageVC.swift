@@ -64,9 +64,46 @@ class UploadImageVC: UIViewController {
        
     @objc func uploadButtonPressed() {
         
+        guard let currentUser = FirebaseAuthService.manager.currentUser else {
+            showErrorAlert(title: "Error", message: "You must log-in to post")
+            return
+        }
+        
+        
+        
+        guard let userName = currentUser.displayName else {
+            showErrorAlert(title: "Missing Username", message: "You must finish your profile before posting")
+            return
+        }
+        
+        guard let url = imageURL else {
+            showErrorAlert(title: "Error", message: "Could not find image")
+            return
+        }
+        
+        let newPost = Post(imageUrl: url.absoluteString, userName: userName, creatorID: currentUser.uid, dateCreated: Date())
+        
+        FirestoreService.manager.createPost(post: newPost) { (result) in
+            self.handlePostResponse(withResult: result)
+        }
+        
+        
     }
     
     //MARK: Private func
+    
+    private func handlePostResponse(withResult result: Result<Void, Error>) {
+         switch result {
+         case .success:
+             let alertVC = UIAlertController(title: "Post Uploaded", message: "New post was added", preferredStyle: .alert)
+             
+             alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+             
+             present(alertVC, animated: true, completion: nil)
+         case let .failure(error):
+             print("An error occurred creating the post: \(error)")
+         }
+     }
     
     private func setupCaptureSession() {
            DispatchQueue.main.async {
@@ -123,6 +160,12 @@ class UploadImageVC: UIViewController {
            let imagePresent = imageView.image != UIImage(named: "noImage")
            uploadButton.isEnabled = imagePresent
        }
+    
+    private func showErrorAlert(title: String, message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
     
     
           //MARK: UI Setup
