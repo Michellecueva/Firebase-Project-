@@ -23,7 +23,8 @@ class ProfileVC: UIViewController {
             imageView.image = savedImage
         }
     }
-
+    
+    var imageURL: URL? = nil
 
        lazy var titleLabel : UILabel = {
            let label = UILabel()
@@ -47,7 +48,7 @@ class ProfileVC: UIViewController {
     button.setTitle("Save", for: .normal)
     button.setTitleColor(.blue, for: .normal)
         button.isEnabled = false
-        //button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(saveButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -58,7 +59,7 @@ class ProfileVC: UIViewController {
          return button
      }()
     
-    lazy var displayLabel : UILabel = {
+    lazy var userNameLabel : UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.text = displayNameHolder
@@ -100,7 +101,8 @@ class ProfileVC: UIViewController {
           
           alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ (alert) -> Void in
               
-            self.displayLabel.text = userNameField[0].text ?? self.displayNameHolder
+            self.userNameLabel.text = userNameField[0].text ?? self.displayNameHolder
+            self.formValidation()
                  
              }))
           
@@ -108,12 +110,45 @@ class ProfileVC: UIViewController {
           
          }
     
+    @objc func saveButtonPressed() {
+//        guard let userName = userNameLabel.text, let imageUrl = imageURL else {
+//            showErrorAlert(title: "Missing information", message: "A username and image are needed")
+//            return
+//        }
+//        
+//       FirebaseAuthService.manager.updateUserFields(userName: userName, photoURL: imageUrl) { (result) in
+//            switch result {
+//            case .success():
+//                FirestoreService.manager.updateCurrentUser(userName: userName, photoURL: imageUrl) { [weak self] (nextResult) in
+//                    switch nextResult {
+//                    case .success():
+//                        self?.transitionToMainFeed()
+//                    case .failure(let error):
+//                        //MARK: TODO - handle
+//                        
+//                        //Discussion - if can't update on user object in collection, our firestore object will not match what is in auth. should we:
+//                        // 1. Re-try the save?
+//                        // 2. Revert the changes on the auth user?
+//                        // This reconciliation should all be handled on the server side, but having to handle here, we could run into an infinite loop when re-saving.
+//                        print("Failure to update current user: \(error)")
+//                    }
+//                }
+//            case .failure(let error):
+//                //MARK: TODO - handle
+//                print(error)
+//            }
+//        }
+    }
+    
     //MARK: Private func
     
     private func setupCaptureSession() {
            DispatchQueue.main.async {
                let myPickerController = UIImagePickerController()
                myPickerController.delegate = self
+               myPickerController.sourceType = .photoLibrary
+            myPickerController.allowsEditing = true
+            myPickerController.mediaTypes = ["public.image"]
                self.present(myPickerController, animated: true, completion: nil)
 
            }
@@ -159,10 +194,22 @@ class ProfileVC: UIViewController {
     }
     
     private func formValidation() {
-           let validUserName = displayLabel.text != displayNameHolder
+           let validUserName = userNameLabel.text != displayNameHolder
            let imagePresent = imageView.image != defaultImage
            saveButton.isEnabled = validUserName && imagePresent
        }
+    
+    private func transitionToMainFeed() {
+          let mainVC = TabBarVC()
+         self.modalPresentationStyle = .overFullScreen
+         self.present(mainVC, animated: true, completion: nil)
+      }
+    
+    private func showErrorAlert(title: String, message: String) {
+              let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+              alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+              present(alertVC, animated: true, completion: nil)
+          }
     
    
     //MARK: UI Setup
@@ -171,7 +218,7 @@ class ProfileVC: UIViewController {
          self.view.addSubview(titleLabel)
          self.view.addSubview(imageView)
          self.view.addSubview(addImageButton)
-         self.view.addSubview(displayLabel)
+         self.view.addSubview(userNameLabel)
          self.view.addSubview(editDisplayNameButton)
         self.view.addSubview(saveButton)
      }
@@ -233,13 +280,13 @@ class ProfileVC: UIViewController {
     }
     
     private func setDisplayLabelConstraints() {
-        displayLabel.translatesAutoresizingMaskIntoConstraints = false
+        userNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-                     displayLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 20),
-                        displayLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                        displayLabel.widthAnchor.constraint(equalToConstant: 200),
-                        displayLabel.heightAnchor.constraint(equalToConstant: 50)
+                     userNameLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 20),
+                        userNameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                        userNameLabel.widthAnchor.constraint(equalToConstant: 200),
+                        userNameLabel.heightAnchor.constraint(equalToConstant: 50)
                     ])
         
         
@@ -248,7 +295,7 @@ class ProfileVC: UIViewController {
     private func setEditDisplayButtonConstraints() {
         editDisplayNameButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-                           editDisplayNameButton.topAnchor.constraint(equalTo: self.displayLabel.bottomAnchor, constant: 10),
+                           editDisplayNameButton.topAnchor.constraint(equalTo: self.userNameLabel.bottomAnchor, constant: 10),
                               editDisplayNameButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
                               editDisplayNameButton.widthAnchor.constraint(equalToConstant: 200),
                               editDisplayNameButton.heightAnchor.constraint(equalToConstant: 50)
@@ -260,9 +307,28 @@ class ProfileVC: UIViewController {
 extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[.originalImage] as? UIImage
+        guard let image = info[.editedImage] as? UIImage else {
+            print("Could not get image")
+            return
+        }
         savedImage = image
         formValidation()
+        
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+            //MARK: TODO - gracefully fail out without interrupting UX
+            return
+        }
+        
+        FirebaseStorageService.manager.storeImage(image: imageData) { [weak self] (result) in
+            switch result {
+            case .success(let url):
+                self?.imageURL = url
+            case .failure(let error):
+                //MARK: TODO - defer image not save alert, try again later. maybe make VC "dirty" to allow user to move on in nav stack
+                               print(error)
+            }
+        }
+        
         self.dismiss(animated: true, completion: nil)
     }
 }

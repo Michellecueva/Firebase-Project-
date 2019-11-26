@@ -3,6 +3,17 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ProfileVC.imagePickerController(_:didFinishPickingMediaWithInfo:):ProfileVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+            <PersistentString
+               value = "imageURL">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MainFeedVC.viewDidLoad():MainFeedVC.swift">
          <PersistentStrings>
             <PersistentString
@@ -10,6 +21,31 @@
             </PersistentString>
             <PersistentString
                value = "Auth.auth().currentUser">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in closure #1 in ProfileVC.saveButtonPressed():ProfileVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in FirestoreService.updateCurrentUser(userName:photoURL:completion:):FirestoreService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FirestoreService.updateCurrentUser(userName:photoURL:completion:):FirestoreService.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "db.collection(FireStoreCollections.users.rawValue)">
+            </PersistentString>
+            <PersistentString
+               value = "userId">
+            </PersistentString>
+            <PersistentString
+               value = "FireStoreCollections.users.rawValue">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
