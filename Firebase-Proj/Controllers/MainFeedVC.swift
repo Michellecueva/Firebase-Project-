@@ -85,17 +85,17 @@ class MainFeedVC: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 80),
+            titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 70),
             titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             titleLabel.widthAnchor.constraint(equalToConstant: 300),
-            titleLabel.heightAnchor.constraint(equalToConstant: 50)
+            titleLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
     private func setUsersCollectionViewConstraints() {
         usersCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            usersCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 0),
+            usersCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
             usersCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             usersCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             usersCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)

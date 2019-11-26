@@ -146,12 +146,7 @@ class SignUpVC: UIViewController {
             switch result {
             case .success(let user):
                 FirestoreService.manager.createAppUser(user: AppUser(from: user)) { [weak self] (result) in
-                    switch result {
-                    case .success:
-                        self?.transitionToProfile()
-                    case .failure(let error):
-                        self?.showErrorAlert(title: "Error creating user", message: error.localizedDescription)
-                    }
+                    self?.handleCreatedUserInFirestoreResponse(result: result)
                 }
             case .failure(let error):
                 self?.showErrorAlert(title: "Error creating user", message: error.localizedDescription)
@@ -159,9 +154,19 @@ class SignUpVC: UIViewController {
         }
     }
     
-    private func transitionToProfile() {
-        let profileVC = ProfileVC()
-        self.present(profileVC, animated: true, completion: nil)
+    private func handleCreatedUserInFirestoreResponse(result: Result<(), Error>) {
+        switch result {
+        case .failure(let error):
+            showErrorAlert(title: "Error", message: "Could not log in. Error \(error)")
+        case .success:
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            
+                let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window else {return}
+            
+            UIView.transition(with: window, duration: 0.3, options: .curveLinear, animations: {
+                window.rootViewController = ProfileVC()
+            }, completion: nil)
+        }
     }
     
     

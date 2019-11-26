@@ -12,8 +12,6 @@ import FirebaseAuth
 
 class ProfileVC: UIViewController {
     
-//    var user = AppUser(from: FirebaseAuthService.manager.currentUser!)
-    
     var displayNameHolder = "Display Name"
        
     var defaultImage = UIImage(systemName: "person")
@@ -287,7 +285,7 @@ class ProfileVC: UIViewController {
        saveButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
+            saveButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 35),
             saveButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
                           addImageButton.widthAnchor.constraint(equalToConstant: 50),
                           addImageButton.heightAnchor.constraint(equalToConstant: 50)

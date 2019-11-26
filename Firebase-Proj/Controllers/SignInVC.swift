@@ -97,12 +97,7 @@ class SignInVC: UIViewController {
         }
         
         FirebaseAuthService.manager.loginUser(email: email, password: password) { [weak self] (result) in
-            switch result {
-            case.success:
-                self?.transitionToMainFeed()
-            case .failure(let error):
-                self?.showErrorAlert(title: "Error", message: error.localizedDescription)
-            }
+            self?.handleLoginResponse(result: result)
         }
         
     }
@@ -115,11 +110,27 @@ class SignInVC: UIViewController {
         present(alertVC, animated: true, completion: nil)
     }
     
-    private func transitionToMainFeed() {
-         let mainVC = TabBarVC()
-        self.modalPresentationStyle = .overFullScreen
-        self.present(mainVC, animated: true, completion: nil)
-     }
+    private func handleLoginResponse(result: Result<(), Error>) {
+        switch result {
+        case .failure(let error):
+            showErrorAlert(title: "Error", message: "Could not log in. Error \(error)")
+        case .success:
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            
+                let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window else {return}
+            
+            UIView.transition(with: window, duration: 0.3, options: .curveLinear, animations: {
+                window.rootViewController = TabBarVC()
+            }, completion: nil)
+        }
+    }
+
+    
+//    private func transitionToMainFeed() {
+//         let mainVC = TabBarVC()
+//        self.modalPresentationStyle = .fullScreen
+//        self.present(mainVC, animated: true, completion: nil)
+//     }
     
     //MARK: UI Setup
     
