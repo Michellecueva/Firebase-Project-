@@ -7,8 +7,17 @@
 //
 
 import UIKit
+import AVFoundation
 
 class UploadImageVC: UIViewController {
+    
+    var savedImage : UIImage! {
+        didSet {
+            imageView.image = savedImage
+        }
+    }
+    
+    var imageURL: URL? = nil
     
     lazy var titleLabel : UILabel = {
              let label = UILabel()
@@ -28,7 +37,7 @@ class UploadImageVC: UIViewController {
     lazy var addImageButton: UIButton = {
             let button = UIButton()
            button.setImage(UIImage(named: "AddButton"), for: .normal)
-            //button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
             return button
         }()
 
@@ -36,7 +45,7 @@ class UploadImageVC: UIViewController {
                let button = UIButton()
            button.setTitle("Upload", for: .normal)
            button.setTitleColor(.blue, for: .normal)
-               //button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(uploadButtonPressed), for: .touchUpInside)
                return button
            }()
     
@@ -46,6 +55,74 @@ class UploadImageVC: UIViewController {
         setSubviews()
         setConstraints()
     }
+    
+    //MARK: Obj-C Methods
+    
+    @objc func addImagePressed() {
+           checkAuthorizationForAccessingPhotos()
+       }
+       
+    @objc func uploadButtonPressed() {
+        
+    }
+    
+    //MARK: Private func
+    
+    private func setupCaptureSession() {
+           DispatchQueue.main.async {
+               let myPickerController = UIImagePickerController()
+               myPickerController.delegate = self
+               myPickerController.sourceType = .photoLibrary
+            myPickerController.allowsEditing = true
+            myPickerController.mediaTypes = ["public.image"]
+               self.present(myPickerController, animated: true, completion: nil)
+
+           }
+       }
+    
+    private func checkAuthorizationForAccessingPhotos() {
+         switch AVCaptureDevice.authorizationStatus(for: .video) {
+         case .authorized: // The user has previously granted access to the camera.
+             return setupCaptureSession()
+     
+         case .notDetermined: // The user has not yet been asked for camera access.
+             AVCaptureDevice.requestAccess(for: .video) { granted in
+                 if granted {
+                     self.setupCaptureSession()
+                 }
+             }
+             
+         case .denied: // The user has previously denied access.
+             return alertCameraAccessNeeded()
+             
+         case .restricted: // The user can't grant access due to restrictions.
+             return
+             
+         default:
+             return
+         }
+     }
+    
+    private func alertCameraAccessNeeded() {
+            let settingsAppURL = URL(string: UIApplication.openSettingsURLString)!
+          
+            let alert = UIAlertController(
+            title: "Need Camera Access",
+                    message: "Camera access is required to make full use of this app.",
+                    preferredStyle: UIAlertController.Style.alert
+                )
+          
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Allow Camera", style: .cancel, handler: { (alert) -> Void in
+               UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
+            }))
+            present(alert, animated: true, completion: nil)
+    }
+    
+    private func formValidation() {
+           let imagePresent = imageView.image != UIImage(named: "noImage")
+           uploadButton.isEnabled = imagePresent
+       }
     
     
           //MARK: UI Setup
@@ -110,3 +187,33 @@ class UploadImageVC: UIViewController {
     }
 
 }
+
+extension UploadImageVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else {
+            print("Could not get image")
+            return
+        }
+        savedImage = image
+        formValidation()
+        
+        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+            //MARK: TODO - gracefully fail out without interrupting UX
+            return
+        }
+        
+        FirebaseStorageService.manager.storeImage(image: imageData) { [weak self] (result) in
+            switch result {
+            case .success(let url):
+                self?.imageURL = url
+            case .failure(let error):
+                //MARK: TODO - defer image not save alert, try again later. maybe make VC "dirty" to allow user to move on in nav stack
+                               print(error)
+            }
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
