@@ -334,8 +334,8 @@
             filePath = "Firebase-Proj/Firebase/FirestoreService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "updateCurrentUser(userName:photoURL:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -350,8 +350,8 @@
             filePath = "Firebase-Proj/Firebase/FirestoreService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "updateCurrentUser(userName:photoURL:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -366,8 +366,8 @@
             filePath = "Firebase-Proj/Firebase/FirestoreService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "updateCurrentUser(userName:photoURL:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -430,8 +430,8 @@
             filePath = "Firebase-Proj/Firebase/FirestoreService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "updateCurrentUser(userName:photoURL:completion:)"
             landmarkType = "7">
             <Locations>
@@ -446,9 +446,9 @@
                   urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Firebase-Proj/Firebase-Proj/Firebase/FirestoreService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "1898">
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "1770">
                </Location>
                <Location
                   uuid = "8EE80FFC-2BEE-4543-9D94-FAA660D09D55 - 6c84fb579717246c"
@@ -461,8 +461,8 @@
                   urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Firebase-Proj/Firebase-Proj/Firebase/FirestoreService.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
                   offsetFromSymbolStart = "116">
                </Location>
             </Locations>
@@ -496,6 +496,86 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
             endingLineNumber = "55"
+            landmarkName = "updateCurrentUser(userName:photoURL:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBD92DE5-F43E-4D7F-B707-C3C1FE373C92"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Firebase-Proj/Firebase/FirestoreService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "updateCurrentUser(userName:photoURL:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FBD92DE5-F43E-4D7F-B707-C3C1FE373C92 - 369c9d8f5851be82"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Firebase_Proj.FirestoreService.updateCurrentUser(userName: Swift.Optional&lt;Swift.String&gt;, photoURL: Swift.Optional&lt;Foundation.URL&gt;, completion: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Firebase-Proj"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Firebase-Proj/Firebase-Proj/Firebase/FirestoreService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "1456">
+               </Location>
+               <Location
+                  uuid = "FBD92DE5-F43E-4D7F-B707-C3C1FE373C92 - a89d3ad2c20212b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Firebase_Proj.FirestoreService.updateCurrentUser(userName: Swift.Optional&lt;Swift.String&gt;, photoURL: Swift.Optional&lt;Foundation.URL&gt;, completion: (Swift.Result&lt;(), Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Firebase-Proj"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michellecueva/Desktop/Labs/Unit-5/Firebase-Proj/Firebase-Proj/Firebase/FirestoreService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "244">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8B3F538F-60D3-47B3-905A-7782E0888E2E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Firebase-Proj/Firebase/FirestoreService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "updateCurrentUser(userName:photoURL:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5690D88-FEB7-4E14-870D-682A4E5C0E87"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Firebase-Proj/Firebase/FirestoreService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "updateCurrentUser(userName:photoURL:completion:)"
             landmarkType = "7">
          </BreakpointContent>

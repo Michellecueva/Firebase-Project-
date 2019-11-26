@@ -48,17 +48,26 @@ class FirestoreService {
             updateFields["photoURL"] = photo.absoluteString
         }
         
-        let docRef = db.collection("users").document(userId)
+//        let docRef = db.collection("users").document(userId)
+//
+//        docRef.getDocument { (document, error) in
+//            if let document = document, document.exists {
+//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                print("Document data: \(dataDescription)")
+//            } else {
+//                print("Document does not exist")
+//            }
+//        }
         
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-                print("Document data: \(dataDescription)")
+        db.collection(FireStoreCollections.users.rawValue).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
             } else {
-                print("Document does not exist")
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                }
             }
         }
-        
        
         //PUT request
         db.collection(FireStoreCollections.users.rawValue).document(userId).updateData(updateFields) { (error) in

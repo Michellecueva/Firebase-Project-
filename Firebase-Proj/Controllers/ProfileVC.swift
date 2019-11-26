@@ -111,33 +111,33 @@ class ProfileVC: UIViewController {
          }
     
     @objc func saveButtonPressed() {
-//        guard let userName = userNameLabel.text, let imageUrl = imageURL else {
-//            showErrorAlert(title: "Missing information", message: "A username and image are needed")
-//            return
-//        }
-//        
-//       FirebaseAuthService.manager.updateUserFields(userName: userName, photoURL: imageUrl) { (result) in
-//            switch result {
-//            case .success():
-//                FirestoreService.manager.updateCurrentUser(userName: userName, photoURL: imageUrl) { [weak self] (nextResult) in
-//                    switch nextResult {
-//                    case .success():
-//                        self?.transitionToMainFeed()
-//                    case .failure(let error):
-//                        //MARK: TODO - handle
-//                        
-//                        //Discussion - if can't update on user object in collection, our firestore object will not match what is in auth. should we:
-//                        // 1. Re-try the save?
-//                        // 2. Revert the changes on the auth user?
-//                        // This reconciliation should all be handled on the server side, but having to handle here, we could run into an infinite loop when re-saving.
-//                        print("Failure to update current user: \(error)")
-//                    }
-//                }
-//            case .failure(let error):
-//                //MARK: TODO - handle
-//                print(error)
-//            }
-//        }
+        guard let userName = userNameLabel.text, let imageUrl = imageURL else {
+            showErrorAlert(title: "Missing information", message: "A username and image are needed")
+            return
+        }
+
+       FirebaseAuthService.manager.updateUserFields(userName: userName, photoURL: imageUrl) { (result) in
+            switch result {
+            case .success():
+                FirestoreService.manager.updateCurrentUser(userName: userName, photoURL: imageUrl) { [weak self] (nextResult) in
+                    switch nextResult {
+                    case .success():
+                        self?.transitionToMainFeed()
+                    case .failure(let error):
+                        //MARK: TODO - handle
+
+                        //Discussion - if can't update on user object in collection, our firestore object will not match what is in auth. should we:
+                        // 1. Re-try the save?
+                        // 2. Revert the changes on the auth user?
+                        // This reconciliation should all be handled on the server side, but having to handle here, we could run into an infinite loop when re-saving.
+                        print("Failure to update current user: \(error)")
+                    }
+                }
+            case .failure(let error):
+                //MARK: TODO - handle
+                print(error)
+            }
+        }
     }
     
     //MARK: Private func
