@@ -41,7 +41,7 @@ class DetailViewController: UIViewController {
     lazy var createdAtLabel : UILabel = {
              let label = UILabel()
              label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-             label.text = "Created at: \(createdAt) "
+        label.text = "Created at: \(createdAt.toString(dateFormat: "MMM d, h:mm a"))"
              label.font = UIFont(name: "Arial", size: 17)
              return label
          }()
@@ -145,7 +145,7 @@ class DetailViewController: UIViewController {
         NSLayoutConstraint.activate([
                 createdAtLabel.topAnchor.constraint(equalTo: self.submittedByLabel.bottomAnchor),
                 createdAtLabel.leadingAnchor.constraint(equalTo: submittedByLabel.leadingAnchor),
-                createdAtLabel.widthAnchor.constraint(equalToConstant: 200),
+                createdAtLabel.widthAnchor.constraint(equalToConstant: 350),
                 createdAtLabel.heightAnchor.constraint(equalToConstant: 50)
                ])
     }
