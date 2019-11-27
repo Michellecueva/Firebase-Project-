@@ -45,6 +45,14 @@ class DetailViewController: UIViewController {
              label.font = UIFont(name: "Arial", size: 17)
              return label
          }()
+    
+    lazy var backButton: UIButton = {
+           let button = UIButton()
+           button.setTitle("Back", for: .normal)
+           button.setTitleColor(.blue, for: .normal)
+           button.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+           return button
+       }()
 
 
     override func viewDidLoad() {
@@ -53,6 +61,12 @@ class DetailViewController: UIViewController {
         setSubviews()
         setConstraints()
         loadImage()
+    }
+    
+    //MARK: Obj-C Methods
+    
+    @objc func backButtonPressed() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     //MARK: Private func
@@ -80,6 +94,7 @@ class DetailViewController: UIViewController {
         self.view.addSubview(imageView)
         self.view.addSubview(submittedByLabel)
         self.view.addSubview(createdAtLabel)
+        self.view.addSubview(backButton)
     }
     
     private func setConstraints() {
@@ -87,6 +102,7 @@ class DetailViewController: UIViewController {
         setImageViewConstraints()
         setSubmittedByLabelConstraints()
         setCreatedAtLabelConstraints()
+        setbackButtonConstraints()
     }
     
     private func setTitleLabelConstraints() {
@@ -133,6 +149,17 @@ class DetailViewController: UIViewController {
                 createdAtLabel.heightAnchor.constraint(equalToConstant: 50)
                ])
     }
+    
+    private func setbackButtonConstraints() {
+          backButton.translatesAutoresizingMaskIntoConstraints = false
+          
+          NSLayoutConstraint.activate([
+              backButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 35),
+              backButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+              backButton.widthAnchor.constraint(equalToConstant: 50),
+              backButton.heightAnchor.constraint(equalToConstant: 50)
+          ])
+      }
     
 
 }

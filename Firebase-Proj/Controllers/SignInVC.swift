@@ -12,6 +12,7 @@ import FirebaseAuth
 class SignInVC: UIViewController {
     
     let userFieldImage = UIImageView()
+        
     lazy var titleLabel : UILabel = {
         let label = UILabel()
         label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -52,13 +53,22 @@ class SignInVC: UIViewController {
     
     lazy var createAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Dont have an account?  ",
-                                                        attributes: [
-                                                            NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
-                                                            NSAttributedString.Key.foregroundColor: UIColor.white])
-        attributedTitle.append(NSAttributedString(string: "Sign Up",
-                                                  attributes: [NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
-                                                               NSAttributedString.Key.foregroundColor:  UIColor.blue]))
+        let attributedTitle = NSMutableAttributedString(
+            string: "Dont have an account?  ",
+            attributes: [
+                NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
+                NSAttributedString.Key.foregroundColor: UIColor.white
+            ]
+        )
+        
+        attributedTitle.append(NSAttributedString(
+            string: "Sign Up",
+            attributes: [
+                NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
+                NSAttributedString.Key.foregroundColor:  UIColor.blue
+            ]
+        ))
+        
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
         return button
@@ -69,6 +79,7 @@ class SignInVC: UIViewController {
         self.view.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         setSubviews()
         setConstraints()
+        
     }
     
     //MARK: Obj-C Methods
@@ -125,13 +136,7 @@ class SignInVC: UIViewController {
         }
     }
 
-    
-//    private func transitionToMainFeed() {
-//         let mainVC = TabBarVC()
-//        self.modalPresentationStyle = .fullScreen
-//        self.present(mainVC, animated: true, completion: nil)
-//     }
-    
+
     //MARK: UI Setup
     
     private func setSubviews() {

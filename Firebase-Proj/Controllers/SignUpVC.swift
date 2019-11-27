@@ -77,7 +77,15 @@ class SignUpVC: UIViewController {
     }()
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [firstNameTextField,lastNameTextField,emailTextField,passwordTextField,createButton])
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                firstNameTextField,
+                lastNameTextField,
+                emailTextField,
+                passwordTextField,
+                createButton
+            ]
+        )
         stackView.axis = .vertical
         stackView.spacing = 15
         stackView.distribution = .fillEqually
@@ -98,17 +106,14 @@ class SignUpVC: UIViewController {
     
     
     @objc func trySignUp() {
-        
-        if validateFields() {
-            
-            let email = emailTextField.text!
-            let password = passwordTextField.text!
-            FirebaseAuthService.manager.createNewUser(email: email, password:password) { [weak self] (result) in
-                self?.handleCreateAccountResponse(result: result)
-            }
-            
-        } else {
+        if !validateFields() {
             return
+        }
+        
+        let email = emailTextField.text!
+        let password = passwordTextField.text!
+        FirebaseAuthService.manager.createNewUser(email: email, password:password) { [weak self] (result) in
+            self?.handleCreateAccountResponse(result: result)
         }
     }
     

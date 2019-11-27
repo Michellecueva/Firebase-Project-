@@ -35,7 +35,6 @@ class FirestoreService {
     
     func updateCurrentUser(userName: String? = nil, photoURL: URL? = nil, completion: @escaping (Result<(), Error>) -> ()){
         guard let userId = FirebaseAuthService.manager.currentUser?.uid else {
-            //MARK: TODO - handle can't get current user
             return
         }
         var updateFields = [String:Any]()
@@ -48,26 +47,6 @@ class FirestoreService {
             updateFields["photoURL"] = photo.absoluteString
         }
         
-//        let docRef = db.collection("users").document(userId)
-//
-//        docRef.getDocument { (document, error) in
-//            if let document = document, document.exists {
-//                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
-//                print("Document data: \(dataDescription)")
-//            } else {
-//                print("Document does not exist")
-//            }
-//        }
-        
-        db.collection(FireStoreCollections.users.rawValue).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                }
-            }
-        }
        
         //PUT request
         db.collection(FireStoreCollections.users.rawValue).document(userId).updateData(updateFields) { (error) in
@@ -110,8 +89,7 @@ class FirestoreService {
 
            //type: Collection Reference
            let collection = db.collection(FireStoreCollections.posts.rawValue)
-           //If i want to sort, or even to filter my collection, it's going to work with an instance of a different type - FIRQuery
-           //collection + sort/filter settings.getDocuments
+         
          
             let query = collection.order(by:"dateCreated", descending: true)
                query.getDocuments(completion: completionHandler)
