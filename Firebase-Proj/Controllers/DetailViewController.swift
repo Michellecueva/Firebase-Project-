@@ -133,8 +133,8 @@ class DetailViewController: UIViewController {
         
         NSLayoutConstraint.activate([
                 submittedByLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 20),
-                submittedByLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 30),
-                submittedByLabel.widthAnchor.constraint(equalToConstant: 200),
+                submittedByLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                submittedByLabel.widthAnchor.constraint(equalToConstant: 350),
                 submittedByLabel.heightAnchor.constraint(equalToConstant: 50)
                ])
     }
