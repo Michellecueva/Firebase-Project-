@@ -17,6 +17,8 @@ class UploadImageVC: UIViewController {
         }
     }
     
+    var defaultImage = UIImage(named: "noImage")
+    
     var imageURL: URL? = nil
     
     lazy var titleLabel : UILabel = {
@@ -30,7 +32,7 @@ class UploadImageVC: UIViewController {
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "noImage")
+        imageView.image = defaultImage
         return imageView
     }()
     
@@ -97,7 +99,11 @@ class UploadImageVC: UIViewController {
         case .success:
             let alertVC = UIAlertController(title: "Post Uploaded", message: "New post was added", preferredStyle: .alert)
             
-            alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: { (alert) -> Void in
+                self.imageView.image = self.defaultImage
+                self.tabBarController?.selectedIndex = 0
+                
+            }))
             
             present(alertVC, animated: true, completion: nil)
         case let .failure(error):
@@ -160,6 +166,7 @@ class UploadImageVC: UIViewController {
         let imagePresent = imageView.image != UIImage(named: "noImage")
         uploadButton.isEnabled = imagePresent
     }
+    
     
     private func showErrorAlert(title: String, message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)

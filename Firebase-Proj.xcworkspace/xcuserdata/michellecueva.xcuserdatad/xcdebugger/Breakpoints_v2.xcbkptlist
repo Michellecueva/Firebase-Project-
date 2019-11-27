@@ -368,7 +368,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
             endingLineNumber = "65"
-            landmarkName = "uploadButtonPressed()"
+            landmarkName = "addImagePressed()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
